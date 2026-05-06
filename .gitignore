@@ -39,5 +39,6 @@ Thumbs.db
 
 # Claude Code per-user settings (do not commit)
 .claude/settings.local.json
+.claude/orchestrator-prompt.md
 
 .vercel
