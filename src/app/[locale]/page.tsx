@@ -1,10 +1,22 @@
-import { getTranslations } from "next-intl/server";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/sections/Hero";
 
-export default async function HomePage() {
-  const t = await getTranslations("hero");
+export default function HomePage() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="font-display text-4xl">{t("name")}</h1>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        {/* Placeholders para fases siguientes */}
+        <section id="about" className="min-h-[40vh]" />
+        <section id="experience" className="min-h-[40vh]" />
+        <section id="projects" className="min-h-[40vh]" />
+        <section id="skills" className="min-h-[40vh]" />
+        <section id="education" className="min-h-[40vh]" />
+        <section id="contact" className="min-h-[40vh]" />
+      </main>
+      <Footer />
+    </>
   );
 }
