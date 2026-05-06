@@ -38,30 +38,36 @@ Objetivo: repositorio funcional, desplegable y con toda la infraestructura lista
 
 ---
 
-## FASE 1 — Layout base + Hero (Día 2-3)
+## FASE 1 — Layout base + Hero (Día 2-3) ✅
 
 Objetivo: la web tiene estructura visual, navegación y la primera sección impactante.
 
 ### Tareas
-- [ ] Crear `layout.tsx` global con fuentes (Syne + JetBrains Mono vía Google Fonts)
-- [ ] Crear `Header.tsx` con:
-  - [ ] Logo/nombre
-  - [ ] Navegación a secciones (scroll suave)
-  - [ ] Botón de cambio de idioma ES/EN
-  - [ ] Responsive (hamburger en móvil)
-- [ ] Crear `Footer.tsx` con links a LinkedIn, GitHub y email
-- [ ] Crear sección `Hero.tsx` con:
-  - [ ] Nombre completo animado
-  - [ ] Título profesional (con efecto typewriter opcional)
-  - [ ] Descripción breve (tagline)
-  - [ ] CTAs: "Ver proyectos" y "Descargar CV"
-  - [ ] Foto de perfil
-  - [ ] Animación de entrada con Framer Motion
-- [ ] Añadir todos los textos a `es.json` y `en.json`
-- [ ] Verificar responsive en móvil, tablet y desktop
+- [x] Crear `layout.tsx` global con fuentes (Syne + JetBrains Mono vía Google Fonts) _(adelantado en Fase 0; Inter añadido como body)_
+- [x] Crear `Header.tsx` con:
+  - [x] Logo/nombre _(monograma "AA" en mobile, "Ander Akier" en desktop)_
+  - [x] Navegación a secciones (scroll suave) _(CSS `scroll-behavior: smooth` + `scroll-margin-top`)_
+  - [x] Botón de cambio de idioma ES/EN _(usa `createNavigation` de next-intl)_
+  - [x] Responsive (hamburger en móvil) _(shadcn `Sheet`)_
+- [x] Crear `Footer.tsx` con links a LinkedIn, GitHub y email
+- [x] Crear sección `Hero.tsx` con:
+  - [x] Nombre completo animado
+  - [ ] ~~Título profesional (con efecto typewriter opcional)~~ _(saltado por simplicidad — opcional)_
+  - [x] Descripción breve (tagline)
+  - [x] CTAs: "Ver proyectos" y "Descargar CV"
+  - [x] Foto de perfil _(next/image priority, ring-primary/20)_
+  - [x] Animación de entrada con Framer Motion _(stagger)_
+- [x] Añadir todos los textos a `es.json` y `en.json` _(adelantado por CONTENT en Fase 0)_
+- [x] Verificar responsive en móvil, tablet y desktop _(mobile-first + breakpoints `md:` y `lg:`; smoke visual pendiente en preview de Vercel)_
+
+### Decisiones técnicas tomadas
+- Iconos LinkedIn/GitHub: SVG inline en `Footer.tsx` (la versión instalada de `lucide-react` no exporta esas marcas).
+- shadcn instalado: `button` + `sheet` con peers `@radix-ui/react-slot`, `@radix-ui/react-dialog`, `class-variance-authority`.
+- Logo header: monograma "AA" en mobile, nombre "Ander Akier" desde `sm:` para no romper viewports estrechos.
+- `experience.items[].isHighlighted` (boolean en JSON, abierto desde Fase 0): patrón aprobado para Fase 2 — consumirlo con `t.raw('experience.items')` casteado a un tipo en `src/types/index.ts`.
 
 ### PR
-`feature/fase-1-layout-hero` → `develop`
+`feature/fase-1-layout-hero` → `develop` _(mergeado tras bracket `fix/security-redact-phone` que tachó un teléfono filtrado en `.claude/orchestrator-prompt.md`)_
 
 ---
 
