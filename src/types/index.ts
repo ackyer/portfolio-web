@@ -36,3 +36,29 @@ export type Certification = {
   entity: string;
   date: string;
 };
+
+export type ChatErrorCode =
+  | "too_long"
+  | "rate_limit"
+  | "unavailable"
+  | "generic";
+
+export type ChatProvider = "gemini" | "groq";
+
+export interface ChatRequest {
+  messages: ChatMessage[];
+  locale: Locale;
+}
+
+export interface ChatResponseOk {
+  ok: true;
+  reply: string;
+  provider: ChatProvider;
+}
+
+export interface ChatResponseError {
+  ok: false;
+  error: ChatErrorCode;
+}
+
+export type ChatResponse = ChatResponseOk | ChatResponseError;

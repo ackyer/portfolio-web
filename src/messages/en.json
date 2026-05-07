@@ -246,8 +246,10 @@
     "sendButtonAriaLabel": "Send message",
     "loadingAriaLabel": "Assistant is typing",
     "errors": {
+      "tooLong": "Your message is too long. Please make it shorter (500 characters max).",
       "rateLimited": "You have sent too many messages. Please wait a few minutes and try again.",
       "networkError": "Could not connect. Check your internet connection and try again.",
+      "unavailable": "The assistant is unavailable right now. Please try again later.",
       "generic": "Something went wrong. Please try again in a moment."
     },
     "userLabel": "You",
