@@ -183,30 +183,33 @@ Objetivo: sección de contacto con CV descargable.
 
 ---
 
-## FASE 4.5 — Refino del perfil + tuning del chatbot (Día 10.5)
+## FASE 4.5 — Refino del perfil + tuning del chatbot (Día 10.5) ✅
 
-Objetivo: enriquecer `PERFIL_ANDER.md` con información que solo Ander sabe (matices que no estaban en la versión inicial), propagar a la web (i18n) y al system prompt del chatbot, y afinar cómo responde el asistente.
+Objetivo: enriquecer `PERFIL_ANDER.md` con información que solo Ander sabe, propagar a la web (i18n) y al system prompt del chatbot, y afinar cómo responde el asistente.
 
 ### Tareas
-- [ ] **Entrevista guiada al usuario** — el orquestador hace preguntas estructuradas:
-  - Experiencia Michelin: tareas concretas, anécdotas, métricas adicionales más allá del >50%
-  - TFG: contexto técnico que se pueda compartir (sin violar la confidencialidad), supervisor, dificultades superadas, lecciones aprendidas
-  - Erasmus en Pardubice: highlights académicos/personales, idiomas usados en clase, materias relevantes
-  - KYB y Tasubinsa: skills transferibles que aporten al perfil técnico (rigor, calidad, trabajo en equipo)
-  - Stack técnico: nivel real con cada herramienta, cuál es el "fuerte" frente al "conozco"
-  - Soft skills + motivaciones + estilo de trabajo
-  - Hobbies o intereses que aporten al perfil profesional
-  - Disponibilidad/condiciones específicas (relocation, salario orientativo, modalidad híbrida vs full remote, etc.)
-  - Preguntas frecuentes que el usuario quiera que el chatbot responda especialmente bien
-- [ ] **Actualizar `PERFIL_ANDER.md`** con la nueva información (CONTENT-style)
-- [ ] **Propagar a `src/messages/{es,en}.json`** si la nueva info afecta secciones visibles (About / Experience / Projects)
-- [ ] **Regenerar `src/lib/profile-content.ts`** con el RAW_PROFILE actualizado (manteniendo el strip del teléfono)
-- [ ] **Refinar `src/lib/ai.ts` system prompt** si hace falta:
-  - [ ] Reglas de tono más específicas (qué destacar, qué tono usar)
-  - [ ] Guías de respuesta para preguntas frecuentes
-  - [ ] Posibles ejemplos few-shot si aportan
-- [ ] **QA del chatbot post-refino**: 8-10 preguntas reales sobre Ander, validar respuestas ricas y precisas
-- [ ] **Verificar regresión de privacidad**: el teléfono sigue sin filtrarse
+- [x] **Entrevista guiada al usuario** — 6 bloques temáticos completados:
+  - [x] Michelin: día a día (planta + oficina), Dataiku como herramienta marcadora, sistema de inferencia en tiempo real con probabilidad calibrada, alertas con gradientes de severidad
+  - [x] TFG: tutorización (Experto Digital + Analista de Datos, sin nombres), 1 año de datos históricos, feature engineering por etapas, **modelo final LightGBM** (no XGBoost/RF), reto del etiquetado difuso de roturas
+  - [x] Erasmus + KYB + Tasubinsa: "Management of Operating Systems" como asignatura destacada, independencia + inglés diario, disciplina/persistencia/respeto operario
+  - [x] Stack: calibración con niveles privados (F/C+/C/B); regla "excluir B de la web" con rescate de MySQL/PostgreSQL/Azure/Databricks
+  - [x] Soft skills: resolutivo, persistente, curioso; energía en problemas complejos con soluciones alternativas; lidera conversaciones técnicas; hobbies montañismo+gym+IA
+  - [x] Cierre operativo: modalidad híbrida ideal, geografía PV/Navarra/La Rioja, salario en `PERFIL_PRIVADO.md` (gitignorado), FAQs priorizadas (disponibilidad, inglés, LLMs/IA)
+- [x] **Actualizar `PERFIL_ANDER.md`** con todo el enriquecimiento + nuevo headline "Ingeniero Informático Junior — Data · Software · ML & IA" + carnet B/vehículo + curso Anthropic completado may. 2026
+- [x] **Crear `PERFIL_PRIVADO.md`** (gitignorado) con el rango salarial — fuera del repo y nunca propagado
+- [x] **Propagar a `src/messages/{es,en}.json`** — full reorg de skills (9 categorías incluyendo Industrial/OT nueva), nuevo headline, TFG con LGBM, Erasmus enriquecido, fact "Movilidad" en About
+- [x] **Regenerar `src/lib/profile-content.ts`** con el RAW_PROFILE actualizado, niveles privados de skills (calibración para el chatbot), defensas anti-teléfono y anti-salario
+- [x] **Refinar `src/lib/ai.ts` system prompt** — reglas de tono (resolutivo, persistente, curioso), reglas de privacidad (teléfono + salario + NDA Michelin), 6 FAQs priorizadas con respuestas calibradas
+- [x] **Componentes**: nueva categoría `industrial` en Skills.tsx, nuevo item "Movilidad" con icono `Car` en About.tsx
+- [ ] **QA del chatbot post-refino**: 8-10 preguntas reales (preview Vercel)
+- [ ] **Verificar regresiones de privacidad**: teléfono + salario en preview live
+
+### Decisiones técnicas tomadas
+- **Salario fuera del repo**: `PERFIL_PRIVADO.md` gitignorado — no se sube a GitHub ni se propaga al chatbot. `profile-content.ts` añade defensa runtime con regex `stripSalary()` además del existente `stripPhones()`.
+- **Niveles privados (F/C+/C/B)**: visibles solo en `PERFIL_ANDER.md` (CV) y en el system prompt del chatbot (calibración interna). La web sigue mostrando badges sin niveles (decisión Fase 2 mantenida).
+- **Regla "excluir C-level"** corregida durante el ejercicio a **"excluir B-level"**, con rescate explícito de MySQL/PostgreSQL/Azure/Azure Databricks para mantener vivas las categorías Bases de datos y Cloud.
+- **Industrial / OT como categoría propia**: nicho diferencial junior con Osisoft PI System / AVEVA PI.
+- **Headline elegido**: "Ingeniero Informático Junior — Data · Software · ML & IA" (cubre las 4 áreas de interés sin chistera).
 
 ### PR
 `feature/fase-4-5-refino` → `develop`

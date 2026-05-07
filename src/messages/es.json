@@ -1,7 +1,7 @@
 {
   "meta": {
-    "siteTitle": "Ander Akier Ayucar Chasco — Data Engineer & Analyst",
-    "siteDescription": "Portfolio profesional de Ander Akier Ayucar Chasco, Ingeniero Informático especializado en Data Engineering, Data Analysis y Machine Learning.",
+    "siteTitle": "Ander Akier Ayucar Chasco — Ingeniero Informático · Data · Software · ML & IA",
+    "siteDescription": "Portfolio profesional de Ander Akier Ayucar Chasco, Ingeniero Informático Junior con experiencia en Data Engineering, Data Analysis, Software, Machine Learning e IA aplicada a entornos industriales reales (Michelin).",
     "ogImageAlt": "Portfolio de Ander Akier Ayucar Chasco"
   },
 
@@ -31,9 +31,9 @@
 
   "hero": {
     "name": "Ander Akier Ayucar Chasco",
-    "headline": "Junior Data Engineer & Data Analyst",
-    "headlineHighlight": "Python · SQL · Power BI · Machine Learning",
-    "tagline": "Transformo datos complejos en soluciones útiles. Experiencia real en industria (Michelin). Disponible para incorporación inmediata.",
+    "headline": "Ingeniero Informático Junior",
+    "headlineHighlight": "Data · Software · ML & IA",
+    "tagline": "Transformo datos complejos en soluciones útiles. Experiencia real en industria (Michelin) con sistemas en tiempo real. Disponible para incorporación inmediata.",
     "cta": {
       "viewProjects": "Ver proyectos",
       "downloadCv": "Descargar CV"
@@ -44,14 +44,16 @@
 
   "about": {
     "sectionTitle": "Sobre mí",
-    "intro": "Ingeniero Informático con experiencia práctica en análisis de datos, data engineering y Machine Learning en entorno industrial real (Michelin). Me especializo en transformar datos complejos en soluciones útiles: desde la construcción de pipelines ETL hasta el desarrollo de modelos predictivos y dashboards interactivos.",
-    "paragraph2": "Trabajo principalmente con Python, SQL, Power BI y Dataiku, y me siento cómodo tanto en el lado del dato como en el del desarrollo de software. Experiencia internacional con Erasmus en República Checa (Universita Pardubice, 2024–2025).",
-    "paragraph3": "Actualmente finalizando mi TFG sobre predicción de rotura de membranas con ML en Michelin — proyecto con datos industriales reales, ingeniería de variables y modelado predictivo. Defensa prevista en junio 2026.",
+    "intro": "Ingeniero Informático con experiencia práctica en datos, software y Machine Learning aplicados a un entorno industrial real (Michelin). Me especializo en transformar datos complejos en soluciones útiles: desde la construcción de pipelines ETL y dashboards de monitorización hasta el desarrollo y la puesta en producción de modelos predictivos.",
+    "paragraph2": "Trabajo principalmente con Python, SQL, Power BI y Dataiku, y me siento cómodo tanto del lado del dato como del desarrollo de software. Tengo curiosidad activa por la IA y la automatización — este propio portfolio integra un chatbot vía Gemini + Groq como ejemplo. Experiencia internacional con Erasmus en República Checa (Universita Pardubice, 2024–2025).",
+    "paragraph3": "Actualmente finalizando mi TFG sobre predicción de rotura de membranas con ML en Michelin — datos industriales reales, ingeniería de variables, modelado predictivo y un sistema de inferencia en tiempo real con probabilidad calibrada. Defensa prevista en junio 2026.",
     "facts": {
       "locationLabel": "Ubicación",
       "locationValue": "Navarra, España",
       "availabilityLabel": "Disponibilidad",
-      "availabilityValue": "Inmediata — abierto a remoto",
+      "availabilityValue": "Inmediata — movilidad total",
+      "mobilityLabel": "Movilidad",
+      "mobilityValue": "Carnet B + vehículo propio",
       "ageLabel": "Edad",
       "ageValue": "23 años",
       "languagesLabel": "Idiomas"
@@ -64,7 +66,7 @@
       },
       {
         "name": "Inglés",
-        "level": "B2",
+        "level": "B2 (+ Erasmus)",
         "code": "EN"
       },
       {
@@ -90,15 +92,16 @@
         "dateRange": "oct. 2025 – mar. 2026",
         "location": "Aranda de Duero, Burgos",
         "isHighlighted": true,
-        "description": "Prácticas de empresa en la fábrica de Michelin en Aranda de Duero, combinadas con el desarrollo del TFG.",
+        "description": "Prácticas de empresa en la fábrica de Michelin de Aranda de Duero, combinando trabajo en planta y oficina con el desarrollo del TFG. Tutorización industrial: Experto Digital de la planta + mentoría técnica diaria del Analista de Datos del equipo.",
         "bullets": [
-          "Desarrollo de pipelines de datos y automatización de flujos ETL con Python, Dataiku y PySpark sobre datos industriales de producción a gran escala",
+          "Desarrollo de pipelines ETL con Python, Dataiku y PySpark sobre datos industriales de producción a gran escala",
           "Análisis exploratorio (EDA) y análisis estadístico de datos de fabricación para detectar patrones y anomalías",
-          "Construcción y validación de modelos de ML para predicción de fallos (mantenimiento predictivo) con Scikit-learn",
+          "Construcción y validación de modelos de ML para predicción de fallos (mantenimiento predictivo) — incluyendo un sistema de inferencia en tiempo real con flujo sincronizado cada 3 minutos y probabilidad calibrada de rotura",
           "Creación de dashboards en Power BI para monitorización de KPIs y detección de anomalías en producción",
+          "Conversaciones constantes con operarios e ingenieros de producción para entender la 'vida del dato' y traducir problemas reales a soluciones técnicas",
           "Trabajo colaborativo en equipo bajo metodología Agile/SCRUM en entorno productivo real"
         ],
-        "stack": ["Python", "SQL", "Dataiku", "Power BI", "Git", "PySpark", "Pandas", "Scikit-learn", "NumPy"]
+        "stack": ["Python", "SQL", "Dataiku", "Power BI", "PySpark", "Pandas", "Scikit-learn", "LightGBM", "Osisoft PI System", "Git"]
       },
       {
         "company": "KYB",
@@ -135,17 +138,18 @@
       "dateRange": "oct. 2025 – jun. 2026",
       "defenseLabel": "Defensa prevista",
       "defenseDate": "junio 2026",
-      "description": "Desarrollo de un sistema de alerta temprana para prensas de cocción en la fábrica de Michelin de Aranda de Duero, utilizando datos industriales reales de producción.",
+      "description": "Sistema de alerta temprana para prensas de cocción en la fábrica de Michelin de Aranda de Duero, utilizando un año de datos industriales reales de producción.",
       "bullets": [
-        "Feature engineering sobre variables industriales complejas",
-        "Entrenamiento y validación cruzada de modelos (Random Forest, XGBoost)",
-        "Resultado clave: más del 50% de reducción de falsos positivos frente al método anterior"
+        "Feature engineering sobre series temporales industriales: rolling windows, máximos/mínimos, desviación estándar, AUC y pendiente absoluta calculados por etapas de la cocción",
+        "Probé varios algoritmos (Random Forest, XGBoost, entre otros) y la decisión final fue LightGBM por su balance entre rendimiento y latencia de inferencia",
+        "Sistema de inferencia en tiempo real con flujo sincronizado cada 3 minutos y probabilidad calibrada de rotura combinando salida del modelo + observaciones históricas",
+        "Resultado clave: más del 50% de reducción de falsos positivos frente al método anterior, con alertas graduadas por severidad"
       ],
       "metricLabel": "Reducción de falsos positivos",
       "metricValue": ">50%",
       "metricDescription": "frente al método anterior",
       "stackTitle": "Stack tecnológico",
-      "stack": ["Python", "Pandas", "Scikit-learn", "PySpark", "SQL", "Dataiku", "Power BI"],
+      "stack": ["Python", "Pandas", "Scikit-learn", "LightGBM", "PySpark", "SQL", "Dataiku", "Power BI", "Osisoft PI System"],
       "confidentialNote": "Código confidencial por acuerdo con Michelin — datos industriales reales"
     }
   },
@@ -158,19 +162,21 @@
       "mlAi": "ML / IA",
       "viz": "Visualización / BI",
       "databases": "Bases de datos",
-      "tools": "Herramientas",
       "cloud": "Cloud",
+      "industrial": "Industrial / OT",
+      "tools": "Herramientas / DevOps",
       "methodologies": "Metodologías"
     },
     "items": {
       "languages": ["Python", "SQL", "Java", "HTML/CSS/JS"],
-      "pythonData": ["Pandas", "NumPy", "Matplotlib", "Seaborn", "PySpark"],
-      "mlAi": ["Scikit-learn", "Random Forest", "XGBoost", "ETL/ELT", "Mantenimiento predictivo"],
-      "viz": ["Power BI", "Dataiku", "Power Apps"],
+      "pythonData": ["Pandas", "NumPy", "PySpark", "Jupyter"],
+      "mlAi": ["Scikit-learn", "LightGBM", "Random Forest", "XGBoost", "ETL/ELT", "Mantenimiento predictivo", "SHAP/LIME", "APIs LLM"],
+      "viz": ["Dataiku", "Power BI", "Grafana"],
       "databases": ["MySQL", "PostgreSQL"],
-      "tools": ["Git", "GitHub", "GitLab"],
       "cloud": ["Azure", "Azure Databricks"],
-      "methodologies": ["Agile", "SCRUM"]
+      "industrial": ["Osisoft PI System / AVEVA PI"],
+      "tools": ["Git", "GitHub", "GitLab", "Linux/Bash", "GitHub Actions / GitLab CI", "VS Code", "JIRA / Confluence"],
+      "methodologies": ["Agile", "SCRUM", "Kanban"]
     },
     "levelLabels": {
       "advanced": "Avanzado",
@@ -194,7 +200,7 @@
       "institution": "Universita Pardubice",
       "location": "República Checa",
       "dateRange": "sep. 2024 – jun. 2025",
-      "description": "Año Erasmus con formación en programación avanzada, trabajo en equipo internacional e inglés en contexto académico diario."
+      "description": "Año Erasmus con formación en programación avanzada, trabajo en equipo internacional e inglés en contexto académico real diario. Asignatura destacada: 'Management of Operating Systems' por la pedagogía proactiva del profesor. El año me dio independencia y me enseñó a afrontar problemas nuevos relacionándome con personas de muchísimas culturas distintas, todo en inglés."
     },
     "certifications": {
       "sectionLabel": "Certificaciones",
@@ -212,7 +218,7 @@
         {
           "name": "Claude Code in Action",
           "entity": "Anthropic",
-          "date": "jun. 2026 (previsto)"
+          "date": "may. 2026"
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "siteTitle": "Ander Akier Ayucar Chasco — Data Engineer & Analyst",
-    "siteDescription": "Professional portfolio of Ander Akier Ayucar Chasco, Computer Engineer specialising in Data Engineering, Data Analysis and Machine Learning.",
+    "siteTitle": "Ander Akier Ayucar Chasco — Computer Engineer · Data · Software · ML & AI",
+    "siteDescription": "Professional portfolio of Ander Akier Ayucar Chasco, Junior Computer Engineer with experience in Data Engineering, Data Analysis, Software, Machine Learning and AI applied to real industrial environments (Michelin).",
     "ogImageAlt": "Portfolio of Ander Akier Ayucar Chasco"
   },
 
@@ -31,9 +31,9 @@
 
   "hero": {
     "name": "Ander Akier Ayucar Chasco",
-    "headline": "Junior Data Engineer & Data Analyst",
-    "headlineHighlight": "Python · SQL · Power BI · Machine Learning",
-    "tagline": "I turn complex data into useful solutions. Real industry experience (Michelin). Available for immediate start.",
+    "headline": "Junior Computer Engineer",
+    "headlineHighlight": "Data · Software · ML & AI",
+    "tagline": "I turn complex data into useful solutions. Real industry experience (Michelin) with real-time systems. Available for immediate start.",
     "cta": {
       "viewProjects": "View projects",
       "downloadCv": "Download CV"
@@ -44,14 +44,16 @@
 
   "about": {
     "sectionTitle": "About me",
-    "intro": "Computer Engineer with hands-on experience in data analysis, data engineering and Machine Learning in a real industrial environment (Michelin). I specialise in turning complex data into useful solutions: from building ETL pipelines to developing predictive models and interactive dashboards.",
-    "paragraph2": "I work mainly with Python, SQL, Power BI and Dataiku, and I am comfortable on both the data side and the software development side. International experience through Erasmus in the Czech Republic (Universita Pardubice, 2024–2025).",
-    "paragraph3": "Currently finishing my Bachelor's thesis on membrane burst prediction with ML at Michelin — a project with real industrial data, feature engineering and predictive modelling. Defence scheduled for June 2026.",
+    "intro": "Computer Engineer with hands-on experience in data, software and Machine Learning applied to a real industrial environment (Michelin). I specialise in turning complex data into useful solutions: from building ETL pipelines and monitoring dashboards to developing and deploying predictive models to production.",
+    "paragraph2": "I work mainly with Python, SQL, Power BI and Dataiku, and I am comfortable on both the data side and the software development side. I have an active curiosity for AI and automation — this very portfolio integrates a chatbot via Gemini + Groq as an example. International experience through Erasmus in the Czech Republic (Universita Pardubice, 2024–2025).",
+    "paragraph3": "Currently finishing my Bachelor's thesis on membrane burst prediction with ML at Michelin — real industrial data, feature engineering, predictive modelling and a real-time inference system with calibrated probability. Defence scheduled for June 2026.",
     "facts": {
       "locationLabel": "Location",
       "locationValue": "Navarre, Spain",
       "availabilityLabel": "Availability",
-      "availabilityValue": "Immediate — open to remote",
+      "availabilityValue": "Immediate — full mobility",
+      "mobilityLabel": "Mobility",
+      "mobilityValue": "Driving license B + own vehicle",
       "ageLabel": "Age",
       "ageValue": "23 years old",
       "languagesLabel": "Languages"
@@ -64,7 +66,7 @@
       },
       {
         "name": "English",
-        "level": "B2",
+        "level": "B2 (+ Erasmus)",
         "code": "EN"
       },
       {
@@ -90,15 +92,16 @@
         "dateRange": "Oct 2025 – Mar 2026",
         "location": "Aranda de Duero, Burgos",
         "isHighlighted": true,
-        "description": "Company internship at Michelin's factory in Aranda de Duero, combined with Bachelor's thesis development.",
+        "description": "Company internship at Michelin's factory in Aranda de Duero, combining shop-floor and office work with the Bachelor's thesis development. Industrial mentorship: factory's Digital Expert + day-to-day technical mentoring from the team's Data Analyst.",
         "bullets": [
-          "Development of data pipelines and ETL workflow automation using Python, Dataiku and PySpark on large-scale industrial production data",
+          "Development of ETL pipelines using Python, Dataiku and PySpark on large-scale industrial production data",
           "Exploratory data analysis (EDA) and statistical analysis of manufacturing data to detect patterns and anomalies",
-          "Building and validating ML models for fault prediction (predictive maintenance) with Scikit-learn",
+          "Building and validating ML models for fault prediction (predictive maintenance) — including a real-time inference system with a synchronised flow every 3 minutes and calibrated burst probability",
           "Creation of Power BI dashboards for KPI monitoring and anomaly detection in production",
+          "Continuous conversations with operators and production engineers to understand the 'data lifecycle' and translate real problems into technical solutions",
           "Collaborative teamwork under Agile/SCRUM methodology in a real production environment"
         ],
-        "stack": ["Python", "SQL", "Dataiku", "Power BI", "Git", "PySpark", "Pandas", "Scikit-learn", "NumPy"]
+        "stack": ["Python", "SQL", "Dataiku", "Power BI", "PySpark", "Pandas", "Scikit-learn", "LightGBM", "Osisoft PI System", "Git"]
       },
       {
         "company": "KYB",
@@ -135,17 +138,18 @@
       "dateRange": "Oct 2025 – Jun 2026",
       "defenseLabel": "Defence scheduled",
       "defenseDate": "June 2026",
-      "description": "Development of an early-warning system for curing presses at Michelin's factory in Aranda de Duero, using real industrial production data.",
+      "description": "Early-warning system for curing presses at Michelin's factory in Aranda de Duero, using one year of real industrial production data.",
       "bullets": [
-        "Feature engineering on complex industrial variables",
-        "Model training and cross-validation (Random Forest, XGBoost)",
-        "Key result: more than 50% reduction in false positives compared to the previous method"
+        "Feature engineering on industrial time series: rolling windows, max/min, standard deviation, AUC and absolute slope computed by curing stages",
+        "Tested several algorithms (Random Forest, XGBoost, among others) and chose LightGBM as the final model for its balance between performance and inference latency",
+        "Real-time inference system with a synchronised flow every 3 minutes and calibrated burst probability combining model output + historical observations",
+        "Key result: more than 50% reduction in false positives compared to the previous method, with severity-graded alerts"
       ],
       "metricLabel": "False positive reduction",
       "metricValue": ">50%",
       "metricDescription": "vs. previous method",
       "stackTitle": "Tech stack",
-      "stack": ["Python", "Pandas", "Scikit-learn", "PySpark", "SQL", "Dataiku", "Power BI"],
+      "stack": ["Python", "Pandas", "Scikit-learn", "LightGBM", "PySpark", "SQL", "Dataiku", "Power BI", "Osisoft PI System"],
       "confidentialNote": "Code is confidential under agreement with Michelin — real industrial data"
     }
   },
@@ -158,19 +162,21 @@
       "mlAi": "ML / AI",
       "viz": "Visualisation / BI",
       "databases": "Databases",
-      "tools": "Tools",
       "cloud": "Cloud",
+      "industrial": "Industrial / OT",
+      "tools": "Tools / DevOps",
       "methodologies": "Methodologies"
     },
     "items": {
       "languages": ["Python", "SQL", "Java", "HTML/CSS/JS"],
-      "pythonData": ["Pandas", "NumPy", "Matplotlib", "Seaborn", "PySpark"],
-      "mlAi": ["Scikit-learn", "Random Forest", "XGBoost", "ETL/ELT", "Predictive maintenance"],
-      "viz": ["Power BI", "Dataiku", "Power Apps"],
+      "pythonData": ["Pandas", "NumPy", "PySpark", "Jupyter"],
+      "mlAi": ["Scikit-learn", "LightGBM", "Random Forest", "XGBoost", "ETL/ELT", "Predictive maintenance", "SHAP/LIME", "LLM APIs"],
+      "viz": ["Dataiku", "Power BI", "Grafana"],
       "databases": ["MySQL", "PostgreSQL"],
-      "tools": ["Git", "GitHub", "GitLab"],
       "cloud": ["Azure", "Azure Databricks"],
-      "methodologies": ["Agile", "SCRUM"]
+      "industrial": ["Osisoft PI System / AVEVA PI"],
+      "tools": ["Git", "GitHub", "GitLab", "Linux/Bash", "GitHub Actions / GitLab CI", "VS Code", "JIRA / Confluence"],
+      "methodologies": ["Agile", "SCRUM", "Kanban"]
     },
     "levelLabels": {
       "advanced": "Advanced",
@@ -194,7 +200,7 @@
       "institution": "Universita Pardubice",
       "location": "Czech Republic",
       "dateRange": "Sep 2024 – Jun 2025",
-      "description": "Erasmus year with advanced programming training, international teamwork and English in a daily academic context."
+      "description": "Erasmus year with advanced programming training, international teamwork and English in a daily real academic context. Standout subject: 'Management of Operating Systems' for the lecturer's proactive pedagogy. Beyond the academic content, the year gave me independence and taught me to face new problems while interacting daily with people from many different cultures, all in English."
     },
     "certifications": {
       "sectionLabel": "Certifications",
@@ -212,7 +218,7 @@
         {
           "name": "Claude Code in Action",
           "entity": "Anthropic",
-          "date": "Jun 2026 (expected)"
+          "date": "May 2026"
         }
       ]
     }

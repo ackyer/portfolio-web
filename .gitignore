@@ -41,4 +41,7 @@ Thumbs.db
 .claude/settings.local.json
 .claude/orchestrator-prompt.md
 
+# Private profile data (salary, sensitive notes — never commit, never propagate to chatbot)
+PERFIL_PRIVADO.md
+
 .vercel
