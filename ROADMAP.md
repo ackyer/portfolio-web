@@ -71,33 +71,39 @@ Objetivo: la web tiene estructura visual, navegación y la primera sección impa
 
 ---
 
-## FASE 2 — Secciones de contenido (Día 4-6)
+## FASE 2 — Secciones de contenido (Día 4-6) ✅
 
 Objetivo: toda la información profesional visible en la web.
 
 ### Tareas
-- [ ] Sección `About.tsx`:
-  - [ ] Texto "Sobre mí" con párrafo de presentación
-  - [ ] Datos clave (edad, ubicación, disponibilidad)
-  - [ ] Idiomas con niveles visuales
-- [ ] Sección `Experience.tsx`:
-  - [ ] Timeline vertical con las 3 experiencias
-  - [ ] Michelin destacada (colores, stack tags)
-  - [ ] Animación scroll-triggered
-- [ ] Sección `Projects.tsx`:
-  - [ ] Card del TFG (proyecto principal)
-  - [ ] Métricas destacadas (>50% reducción falsos positivos)
-  - [ ] Stack tecnológico con iconos/badges
-  - [ ] Nota: "código confidencial, datos industriales reales"
-- [ ] Sección `Skills.tsx`:
-  - [ ] Agrupadas por categorías (Data, ML, Visualización, BD, Herramientas)
-  - [ ] Visual atractivo (grid de badges o barras)
-- [ ] Sección `Education.tsx`:
-  - [ ] Grado en Ingeniería Informática (UBU)
-  - [ ] Erasmus (Universita Pardubice)
-  - [ ] Certificaciones (Cambridge B2, Python 220h)
-- [ ] Añadir todos los textos nuevos a `es.json` y `en.json`
-- [ ] Verificar animaciones y responsive
+- [x] Sección `About.tsx`:
+  - [x] Texto "Sobre mí" con párrafo de presentación _(3 párrafos)_
+  - [x] Datos clave (edad, ubicación, disponibilidad) _(card derecha con iconos `MapPin`/`Briefcase`/`Calendar`)_
+  - [x] Idiomas con niveles visuales _(chip code + name + level, 4 idiomas via `t.raw` casteado a `Language[]`)_
+- [x] Sección `Experience.tsx`:
+  - [x] Timeline vertical con las 3 experiencias _(zigzag desktop / single-col mobile, dot por entry)_
+  - [x] Michelin destacada (colores, stack tags) _(`ring-2 ring-primary` + `bg-primary/5` + role en `text-primary` + dot con `bg-primary`)_
+  - [x] Animación scroll-triggered _(Framer Motion `whileInView` con `viewport={{ once: true, amount: 0.2 }}`)_
+- [x] Sección `Projects.tsx`:
+  - [x] Card del TFG (proyecto principal)
+  - [x] Métricas destacadas (>50% reducción falsos positivos) _(`font-display text-5xl md:text-6xl text-primary`)_
+  - [x] Stack tecnológico con iconos/badges
+  - [x] Nota: "código confidencial, datos industriales reales" _(con icono `Lock`)_
+- [x] Sección `Skills.tsx`:
+  - [x] Agrupadas por categorías (Data, ML, Visualización, BD, Herramientas) _(8 categorías en grid 2 cols)_
+  - [x] Visual atractivo (grid de badges o barras) _(badges sin niveles — `levelLabels` quedan huérfanos en JSON por decisión)_
+- [x] Sección `Education.tsx`:
+  - [x] Grado en Ingeniería Informática (UBU) _(card con `GraduationCap`, sub-bloque TFG)_
+  - [x] Erasmus (Universita Pardubice) _(card con `MapPin`)_
+  - [x] Certificaciones (Cambridge B2, Python 220h, Claude Code in Action) _(lista con `Award`)_
+- [x] Añadir todos los textos nuevos a `es.json` y `en.json` _(adelantado por CONTENT en Fase 0; este PR sólo los consume)_
+- [x] Verificar animaciones y responsive _(mobile-first; smoke visual pendiente en preview de Vercel)_
+
+### Decisiones técnicas tomadas
+- **`isHighlighted` consumido vía `t.raw('items') as ExperienceItem[]`**, con tipos en `src/types/index.ts` (junto a los ya existentes `ChatMessage`, `NavItem`, `Locale`). Patrón aplicado también a `Language[]` y `Certification[]`.
+- **Iconos lucide**: todos los necesarios (`MapPin`, `Briefcase`, `Calendar`, `Lock`, `TrendingDown`, `GraduationCap`, `Award`) resolvieron sin necesidad de SVG inline.
+- **Alternancia de fondos**: `Experience` y `Skills` con `bg-muted/30`; `About`, `Projects`, `Education` con fondo neutro (ritmo visual entre secciones).
+- **`SectionTitle` sin abstracción**: clases `font-display text-3xl md:text-4xl font-bold tracking-tight mb-8 md:mb-12` repetidas inline en las 5 secciones (decisión consciente — duplicación trivial).
 
 ### PR
 `feature/fase-2-secciones` → `develop`
