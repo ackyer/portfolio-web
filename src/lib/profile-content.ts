@@ -63,11 +63,11 @@ Combina dos roles en paralelo: en planta, conversa con operarios e ingenieros de
 
 - Pipelines ETL con Python, Dataiku y PySpark sobre datos industriales de producción a gran escala
 - EDA y análisis estadístico de datos de fabricación para detectar patrones y anomalías
-- Modelos de ML para mantenimiento predictivo, incluyendo un sistema de inferencia en tiempo real con flujo sincronizado cada 3 minutos y probabilidad calibrada de rotura
+- Modelos de ML para mantenimiento predictivo, incluyendo el ciclo end-to-end: entrenamiento, validación y diseño de la puesta en producción (prácticas de MLOps) con un sistema de inferencia en tiempo real con flujo sincronizado cada 3 minutos y probabilidad calibrada de rotura
 - Dashboards en Power BI para monitorización de KPIs y detección de anomalías
 - Trabajo Agile/SCRUM en entorno productivo real
 
-Stack: Python · SQL · Dataiku · Power BI · Git · PySpark · Pandas · Scikit-learn · NumPy · LightGBM · Osisoft PI System
+Stack: Python · SQL · Dataiku · Power BI · Git · PySpark · Pandas · Scikit-learn · NumPy · LightGBM · Osisoft PI System · MLOps
 
 ### KYB — Los Arcos, Navarra
 Peón Especialista — Calidad — jun. 2025 – sep. 2025
@@ -112,13 +112,13 @@ Niveles: F = Fuerte, C+ = Entre Conozco y Fuerte, C = Conozco, B = Básico.
 
 Lenguajes: Python F · SQL F · Java C · HTML/CSS/JS C · C/C++ B
 Python (Data): Pandas F · NumPy F · PySpark F · Jupyter F · Matplotlib B · Seaborn B · Polars B · Plotly B · Streamlit B · DuckDB B · Pydantic B · SQLAlchemy B
-ML / IA: LightGBM F · ETL/ELT F · Mantenimiento predictivo C+ · Scikit-learn C · Random Forest C · XGBoost C · SHAP/LIME C · APIs LLM (OpenAI/Anthropic/Gemini) C · Time series (Prophet/statsmodels/sktime) B · Hugging Face Transformers B · TensorFlow/Keras B · PyTorch B · MLflow B · Optuna B
+ML / IA: LightGBM F · ETL/ELT F · Mantenimiento predictivo C+ · Scikit-learn C · Random Forest C · XGBoost C · SHAP/LIME C · APIs LLM (OpenAI/Anthropic/Gemini) C · MLOps C · Time series (Prophet/statsmodels/sktime) B · Hugging Face Transformers B · TensorFlow/Keras B · PyTorch B · MLflow B · Optuna B
 Visualización / BI: Dataiku F · Power BI C+ · Grafana C · Power Apps B · Tableau B · Metabase B
 Bases de datos: MySQL B · PostgreSQL B · Snowflake B · BigQuery B · MongoDB B · Elasticsearch B · Apache Kafka B
 Cloud: Azure B · Azure Databricks B · Azure Data Factory B · Azure Synapse B · Azure ML B · AWS (S3/Lambda/Glue) B
 Industrial / OT: Osisoft PI System / AVEVA PI C
 Herramientas / DevOps: Git C · GitHub C · GitLab C · Linux/Bash C · GitHub Actions / GitLab CI C · VS Code C · JIRA / Confluence C · Docker B · Kubernetes B
-Metodologías: Agile C · SCRUM C · Kanban C · MLOps / DataOps B
+Metodologías: Agile C · SCRUM C · Kanban C · MLOps C · DataOps C
 
 ## IDIOMAS
 
@@ -147,6 +147,17 @@ Zonas geográficas (prioridad): País Vasco, Navarra, La Rioja y alrededores; 10
 - Le energiza: encontrar soluciones a problemas complejos, especialmente cuando hay margen para enfoques alternativos e innovadores
 - Estilo de trabajo: prefiere colaboración continua sobre aislamiento; lidera conversaciones técnicas dentro del equipo
 - Hobbies con encaje profesional: montañismo + gimnasio (disciplina, planificación, persistencia) + investigación continua de novedades tecnológicas, especialmente IA y automatización
+
+## ÁREAS EN DESARROLLO (autoconciencia honesta)
+
+Como ingeniero junior, hay áreas donde tiene **conocimiento sólido pero todavía poca experiencia aplicada**, y las reconoce explícitamente:
+
+- **Redes neuronales / Deep Learning**: tiene base teórica y ha trabajado con frameworks (TensorFlow, Keras, PyTorch a nivel introductorio), pero aún no ha llevado un modelo de DL a producción en un caso real. Su trabajo de ML en Michelin se apoya en gradient boosting (LightGBM) más que en NN.
+- **Cloud (Azure, AWS)**: ha usado Azure y Azure Databricks dentro del entorno Michelin, pero a nivel funcional / consumo. AWS lo conoce a nivel introductorio. La arquitectura cloud profunda (IaC, networking, IAM avanzado) es algo que está construyendo.
+- **Codebases muy maduros / equipos grandes**: sus contextos hasta ahora han sido proyectos acotados o suyos. Sabe que entrar en un repositorio con años de historia y un equipo de 10+ ingenieros le va a requerir tiempo de adaptación las primeras semanas — lo asume con naturalidad.
+- **Tooling moderno de Data que no ha tocado en serio**: Snowflake, Terraform y Airflow/Prefect aparecen mucho en ofertas y prefiere no fingirlos en una entrevista. Los aprenderá el día que el puesto los requiera.
+
+En soft skills, el área que él mismo identifica para mejorar es **saber cuándo poner stop a un problema técnico**. Su persistencia es uno de sus puntos fuertes, pero ocasionalmente se traduce en seguir empujando una solución cuando el coste-beneficio ya no la justifica. Es consciente y trabaja en ello.
 
 ## PUNTOS CLAVE PARA EL CHATBOT
 

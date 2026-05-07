@@ -170,7 +170,7 @@
     "items": {
       "languages": ["Python", "SQL", "Java", "HTML/CSS/JS"],
       "pythonData": ["Pandas", "NumPy", "PySpark", "Jupyter"],
-      "mlAi": ["Scikit-learn", "LightGBM", "Random Forest", "XGBoost", "ETL/ELT", "Mantenimiento predictivo", "SHAP/LIME", "APIs LLM"],
+      "mlAi": ["Scikit-learn", "LightGBM", "Random Forest", "XGBoost", "ETL/ELT", "Mantenimiento predictivo", "MLOps", "SHAP/LIME", "APIs LLM"],
       "viz": ["Dataiku", "Power BI", "Grafana"],
       "databases": ["MySQL", "PostgreSQL"],
       "cloud": ["Azure", "Azure Databricks"],
