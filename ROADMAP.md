@@ -176,6 +176,36 @@ Objetivo: sección de contacto con CV descargable.
 
 ---
 
+## FASE 4.5 — Refino del perfil + tuning del chatbot (Día 10.5)
+
+Objetivo: enriquecer `PERFIL_ANDER.md` con información que solo Ander sabe (matices que no estaban en la versión inicial), propagar a la web (i18n) y al system prompt del chatbot, y afinar cómo responde el asistente.
+
+### Tareas
+- [ ] **Entrevista guiada al usuario** — el orquestador hace preguntas estructuradas:
+  - Experiencia Michelin: tareas concretas, anécdotas, métricas adicionales más allá del >50%
+  - TFG: contexto técnico que se pueda compartir (sin violar la confidencialidad), supervisor, dificultades superadas, lecciones aprendidas
+  - Erasmus en Pardubice: highlights académicos/personales, idiomas usados en clase, materias relevantes
+  - KYB y Tasubinsa: skills transferibles que aporten al perfil técnico (rigor, calidad, trabajo en equipo)
+  - Stack técnico: nivel real con cada herramienta, cuál es el "fuerte" frente al "conozco"
+  - Soft skills + motivaciones + estilo de trabajo
+  - Hobbies o intereses que aporten al perfil profesional
+  - Disponibilidad/condiciones específicas (relocation, salario orientativo, modalidad híbrida vs full remote, etc.)
+  - Preguntas frecuentes que el usuario quiera que el chatbot responda especialmente bien
+- [ ] **Actualizar `PERFIL_ANDER.md`** con la nueva información (CONTENT-style)
+- [ ] **Propagar a `src/messages/{es,en}.json`** si la nueva info afecta secciones visibles (About / Experience / Projects)
+- [ ] **Regenerar `src/lib/profile-content.ts`** con el RAW_PROFILE actualizado (manteniendo el strip del teléfono)
+- [ ] **Refinar `src/lib/ai.ts` system prompt** si hace falta:
+  - [ ] Reglas de tono más específicas (qué destacar, qué tono usar)
+  - [ ] Guías de respuesta para preguntas frecuentes
+  - [ ] Posibles ejemplos few-shot si aportan
+- [ ] **QA del chatbot post-refino**: 8-10 preguntas reales sobre Ander, validar respuestas ricas y precisas
+- [ ] **Verificar regresión de privacidad**: el teléfono sigue sin filtrarse
+
+### PR
+`feature/fase-4-5-refino` → `develop`
+
+---
+
 ## FASE 5 — Pulido y deploy final (Día 11-12)
 
 Objetivo: web lista para compartir públicamente.
