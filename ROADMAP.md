@@ -216,6 +216,37 @@ Objetivo: enriquecer `PERFIL_ANDER.md` con información que solo Ander sabe, pro
 
 ---
 
+## FASE 4.6 — Calibración honesta del chatbot + skill MLOps (Día 10.6) ✅
+
+Objetivo: balancear el tono "vendedor" del chatbot con autoconciencia honesta sobre áreas en desarrollo (sin auto-flagelarse), y reconocer formalmente MLOps como skill aplicada en Michelin.
+
+### Tareas
+- [x] **Mini-entrevista** al usuario sobre debilidades reconocidas (4 ejes: stack técnico, experiencia, soft skills, tooling concreto)
+- [x] **Nueva sección "Áreas en desarrollo"** en `PERFIL_ANDER.md` y `src/lib/profile-content.ts` — autoconciencia honesta sobre Deep Learning sin producción, Cloud a nivel funcional / no arquitectura, codebases muy maduros, y tooling no tocado en serio (Snowflake, Terraform, Airflow/Prefect). Incluye un punto de soft skill (saber poner stop a un problema técnico)
+- [x] **MLOps reconocido como skill C** — añadido a:
+  - [x] `src/messages/{es,en}.json` → array `skills.items.mlAi` (visible en la web)
+  - [x] `src/lib/profile-content.ts` y `PERFIL_ANDER.md` → ML/IA + Metodologías (con DataOps también elevado a C)
+  - [x] Bullet de Michelin reescrito para reflejar el ciclo end-to-end con "prácticas de MLOps"
+- [x] **Regla #5 del system prompt** en `src/lib/ai.ts` — "only mention areas in development when explicitly asked", uso silencioso de niveles privados F/C+/C/B para calibrar realismo, frases recomendadas tipo "still building practical experience there", prohibición explícita de marketing fluff
+- [x] **FAQ #7** en system prompt — "What are Ander's growth areas / weaknesses?" con respuesta concreta + recordatorio "only mention these if the user explicitly asks"
+- [x] **SECURITY inline**: greps defensivos 0 matches (teléfono + salario); fix oportunista del leak del teléfono literal en línea 22 de `PERFIL_ANDER.md` (archivo vivo committeado, no histórico — A2 cubre solo histórico inmutable)
+- [x] **QA inline**: build clean (Next 16.2.4 + tsc + 5 páginas estáticas + ƒ Proxy registered) + lint clean
+- [ ] **QA del chatbot post-calibración**: 3 prompts en preview Vercel ("¿qué debilidades tiene?", "¿es experto en cloud?", "Háblame de Ander en 30 segundos" — el último para verificar NO mención proactiva de debilidades)
+
+### Decisiones técnicas tomadas
+- **Áreas en desarrollo NO se muestra en la web** — vive solo en `PERFIL_ANDER.md` (CV) + RAW_PROFILE (system prompt). Coherente con el patrón de Fase 4.5 (los niveles privados también viven solo allí).
+- **Skills.tsx no se toca** — el componente itera sobre el array JSON; basta con que `MLOps` aparezca en `skills.items.mlAi`.
+- **MLOps en posición media del array** (entre `Mantenimiento predictivo` y `SHAP/LIME`) — coherencia con el orden conceptual: librerías → conceptos aplicados → herramientas analíticas → APIs.
+- **DataOps también elevado a C** (no se queda en B) — el usuario validó explícitamente.
+- **"prácticas de MLOps" sin el calificativo "básicas"** — tono honesto pero sin auto-rebajarse.
+- **Regla #5 con doble candado** — el matiz "only when explicitly asked" aparece tanto en la regla como en la FAQ #7 para que ambos modelos (Gemini primary + Llama fallback) lo respeten incluso si solo prestan atención a una.
+- **Fix oportunista del leak línea 22** — la decisión A2 cubre el histórico git inmutable (commit `27dd937`), pero el archivo vivo committeado no debía mantener el número literal. Cambiado a referencia a `PERFIL_PRIVADO.md` (gitignorado).
+
+### PR
+`feature/fase-4-6-debilidades` → `develop`
+
+---
+
 ## FASE 5 — Pulido y deploy final (Día 11-12)
 
 Objetivo: web lista para compartir públicamente.
