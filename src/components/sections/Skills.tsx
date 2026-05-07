@@ -9,8 +9,9 @@ const CATEGORY_KEYS = [
   "mlAi",
   "viz",
   "databases",
-  "tools",
   "cloud",
+  "industrial",
+  "tools",
   "methodologies",
 ] as const;
 

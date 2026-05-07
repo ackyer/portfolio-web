@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { MapPin, Briefcase, Calendar } from "lucide-react";
+import { MapPin, Briefcase, Calendar, Car } from "lucide-react";
 import type { Language } from "@/types";
 
 export async function About() {
@@ -55,6 +55,19 @@ export async function About() {
                       {t("facts.availabilityLabel")}
                     </p>
                     <p className="text-sm font-medium">{t("facts.availabilityValue")}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Car
+                    className="h-4 w-4 text-primary mt-0.5 shrink-0"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider font-mono">
+                      {t("facts.mobilityLabel")}
+                    </p>
+                    <p className="text-sm font-medium">{t("facts.mobilityValue")}</p>
                   </div>
                 </div>
 
