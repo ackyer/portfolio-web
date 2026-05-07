@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import "../globals.css";
 
 const syne = Syne({
@@ -52,6 +53,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className="min-h-screen antialiased">
         <NextIntlClientProvider messages={messages}>
           {children}
+          <ChatWidget />
         </NextIntlClientProvider>
       </body>
     </html>

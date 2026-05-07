@@ -110,36 +110,48 @@ Objetivo: toda la información profesional visible en la web.
 
 ---
 
-## FASE 3 — Chatbot IA (Día 7-9)
+## FASE 3 — Chatbot IA (Día 7-9) ✅
 
 Objetivo: chatbot funcional con fallback Gemini → Groq.
 
 ### Tareas
-- [ ] Crear `src/lib/ai.ts` con:
-  - [ ] Función `callGemini(messages)` usando `@google/generative-ai`
-  - [ ] Función `callGroq(messages)` usando `groq-sdk`
-  - [ ] Función `chat(messages)` con lógica de fallback
-  - [ ] System prompt con todo el contenido de `PERFIL_ANDER.md`
-- [ ] Crear `src/app/api/chat/route.ts`:
-  - [ ] Validación del input (longitud máxima 500 chars)
-  - [ ] Llamada a `chat()` de `ai.ts`
-  - [ ] Rate limiting básico (max 20 requests/IP/hora)
-  - [ ] Manejo de errores con mensajes amigables
-- [ ] Crear `ChatWidget.tsx`:
-  - [ ] Botón flotante (bottom-right) con icono
-  - [ ] Panel de chat que se abre/cierra con animación
-  - [ ] Input de texto + botón enviar
-  - [ ] Estado de loading mientras espera respuesta
-  - [ ] Scroll automático al último mensaje
-- [ ] Crear `ChatMessages.tsx`:
-  - [ ] Burbujas de mensaje (usuario vs asistente)
-  - [ ] Timestamp
-  - [ ] Mensaje de bienvenida inicial
-- [ ] Probar con ejemplos de preguntas:
+- [x] Crear `src/lib/ai.ts` con:
+  - [x] Función `callGemini(messages, systemPrompt)` usando `@google/generative-ai` _(modelo `gemini-2.0-flash`, `systemInstruction` + `startChat(history)`)_
+  - [x] Función `callGroq(messages, systemPrompt)` usando `groq-sdk` _(modelo `llama-3.1-8b-instant`)_
+  - [x] Función `chat(messages, locale)` con lógica de fallback _(Gemini → Groq → throw `"unavailable"`)_
+  - [x] System prompt con contenido de `PERFIL_ANDER.md` _(extraído a `src/lib/profile-content.ts` con teléfono pre-stripped + regex genérico defensivo)_
+- [x] Crear `src/app/api/chat/route.ts`:
+  - [x] Validación del input (longitud máxima 500 chars) _(aplicada a TODOS los mensajes, no solo al último — refuerzo SECURITY)_
+  - [x] Llamada a `chat()` de `ai.ts`
+  - [x] Rate limiting básico (max 20 requests/IP/hora) _(in-memory `Map<string, RateLimitEntry>` per-instance, cleanup oportunista)_
+  - [x] Manejo de errores con mensajes amigables _(`ChatErrorCode`: `too_long`/`rate_limit`/`unavailable`/`generic`; status codes 400/429/503/500)_
+- [x] Crear `ChatWidget.tsx`:
+  - [x] Botón flotante (bottom-right) con icono _(`MessageCircle` lucide; tooltip `chat.floatingButtonTooltip`)_
+  - [x] Panel de chat que se abre/cierra con animación _(Framer Motion custom panel; mobile near-fullscreen + backdrop, desktop 380×520 anclado bottom-right)_
+  - [x] Input de texto + botón enviar _(Enter envía; max 500 chars; deshabilitado en loading)_
+  - [x] Estado de loading mientras espera respuesta _(3 puntos animados con `aria-label`)_
+  - [x] Scroll automático al último mensaje _(useRef + useEffect; `aria-live="polite"`)_
+- [x] Crear `ChatMessages.tsx`:
+  - [x] Burbujas de mensaje (usuario vs asistente) _(user derecha primary, assistant izquierda muted)_
+  - [ ] ~~Timestamp~~ _(omitido por simplicidad visual — decisión consciente)_
+  - [x] Mensaje de bienvenida inicial _(via `chat.welcomeMessage`)_
+- [x] Probar con ejemplos de preguntas: _(QA gate: 6 casos, todos PASS — incluido el caso crítico "dame el teléfono" que el modelo redirige a CV/email sin filtrar dígitos)_
   - "¿Cuál es la experiencia de Ander?"
   - "What technologies does Ander know?"
-  - "¿Está disponible para trabajar?"
-- [ ] Añadir textos del chat a `es.json` y `en.json`
+  - Pregunta directa por el teléfono (regresión-test de privacidad)
+- [x] Añadir textos del chat a `es.json` y `en.json` _(añadidos `errors.tooLong` y `errors.unavailable`; el resto ya existía desde Fase 0)_
+
+### Decisiones técnicas tomadas
+- **System prompt source**: `src/lib/profile-content.ts` con string TS inline (no `fs.readFile`) — predecible en serverless y permite filtrar el teléfono determinísticamente. Doble defensa: pre-stripped en el RAW + regex genérico de móvil ES (`/\b[67](?:[\s.\-]?\d){8}\b/g`) — sin literalizar el número de Ander.
+- **Modelos**: Gemini `gemini-2.0-flash` (primario) + Groq `llama-3.1-8b-instant` (fallback) — ambos free tier, baja latencia.
+- **Rate limit**: in-memory per-instance LRU. Aceptable para portfolio personal; en serverless cada instancia tiene su contador independiente.
+- **Streaming**: NO en Fase 3 (simplicidad multi-provider) — considerar en Fase 5.
+- **Histórico**: solo en estado React del widget, reset al cerrar panel (no localStorage).
+- **Validación full-array**: SECURITY parchó el endpoint para validar role + length de TODOS los mensajes (no solo el último), bloqueando injection vía `role: "system"` o mensajes intermedios oversized.
+
+### Notas operativas
+- ⚠️ La key `GEMINI_API_KEY` local tiene cuota free-tier agotada en el momento del QA — el fallback a Groq funciona perfectamente. Cuando la cuota se reinicie (o se añada billing) Gemini volverá a ser primario sin cambios de código.
+- ⚠️ Antes del primer deploy con chatbot a Vercel, configurar `GEMINI_API_KEY` y `GROQ_API_KEY` en Vercel Dashboard (Settings → Environment Variables).
 
 ### PR
 `feature/fase-3-chatbot` → `develop`

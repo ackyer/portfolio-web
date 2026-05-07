@@ -246,8 +246,10 @@
     "sendButtonAriaLabel": "Enviar mensaje",
     "loadingAriaLabel": "El asistente está respondiendo",
     "errors": {
+      "tooLong": "Tu mensaje es demasiado largo. Por favor, hazlo más breve (máximo 500 caracteres).",
       "rateLimited": "Has enviado demasiados mensajes. Por favor, espera unos minutos e inténtalo de nuevo.",
       "networkError": "No se pudo conectar. Comprueba tu conexión a internet e inténtalo de nuevo.",
+      "unavailable": "El asistente no está disponible en este momento. Por favor, inténtalo de nuevo más tarde.",
       "generic": "Algo ha salido mal. Por favor, inténtalo de nuevo en unos instantes."
     },
     "userLabel": "Tú",
