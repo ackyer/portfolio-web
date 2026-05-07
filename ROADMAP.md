@@ -227,8 +227,9 @@ Objetivo: balancear el tono "vendedor" del chatbot con autoconciencia honesta so
   - [x] `src/messages/{es,en}.json` → array `skills.items.mlAi` (visible en la web)
   - [x] `src/lib/profile-content.ts` y `PERFIL_ANDER.md` → ML/IA + Metodologías (con DataOps también elevado a C)
   - [x] Bullet de Michelin reescrito para reflejar el ciclo end-to-end con "prácticas de MLOps"
-- [x] **Regla #5 del system prompt** en `src/lib/ai.ts` — "only mention areas in development when explicitly asked", uso silencioso de niveles privados F/C+/C/B para calibrar realismo, frases recomendadas tipo "still building practical experience there", prohibición explícita de marketing fluff
+- [x] **Regla #5 del system prompt** en `src/lib/ai.ts` — "only mention areas in development when explicitly asked", uso silencioso de marcadores internos para calibrar realismo, frases recomendadas tipo "still building practical experience there", prohibición explícita de marketing fluff
 - [x] **FAQ #7** en system prompt — "What are Ander's growth areas / weaknesses?" con respuesta concreta + recordatorio "only mention these if the user explicitly asks"
+- [x] **Regla #6 anti-leak de marcadores internos** — añadida tras observar en QA que Llama 3.1 8B (Groq fallback) literalizaba "(Niveles privados: B)" / "(Niveles privados: solid working level)" en sus respuestas. La regla #6 prohíbe explícitamente cualquier exposición al usuario de los códigos (F, C+, C, B) o sus traducciones en cualquier idioma. Línea de transición final también reformulada (sin "private calibration", que era el origen del leak literal)
 - [x] **SECURITY inline**: greps defensivos 0 matches (teléfono + salario); fix oportunista del leak del teléfono literal en línea 22 de `PERFIL_ANDER.md` (archivo vivo committeado, no histórico — A2 cubre solo histórico inmutable)
 - [x] **QA inline**: build clean (Next 16.2.4 + tsc + 5 páginas estáticas + ƒ Proxy registered) + lint clean
 - [ ] **QA del chatbot post-calibración**: 3 prompts en preview Vercel ("¿qué debilidades tiene?", "¿es experto en cloud?", "Háblame de Ander en 30 segundos" — el último para verificar NO mención proactiva de debilidades)
