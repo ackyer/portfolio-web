@@ -158,18 +158,25 @@ Objetivo: chatbot funcional con fallback Gemini → Groq.
 
 ---
 
-## FASE 4 — Sección Contact + CV (Día 10)
+## FASE 4 — Sección Contact + CV (Día 10) ✅
 
 Objetivo: sección de contacto con CV descargable.
 
 ### Tareas
-- [ ] Sección `Contact.tsx`:
-  - [ ] Email clickable (`mailto:`)
-  - [ ] Botón "Descargar CV" (PDF en `public/cv/`)
-  - [ ] Links a LinkedIn y GitHub con iconos
-  - [ ] Disponibilidad y ubicación
-- [ ] Subir `CV_Ander_Ayucar.pdf` a `public/cv/`
-- [ ] Subir foto de perfil a `public/images/`
+- [x] Sección `Contact.tsx`:
+  - [x] Email clickable (`mailto:`) _(con focus-visible ring + hover primary)_
+  - [x] Botón "Descargar CV" (PDF en `public/cv/`) _(shadcn Button asChild + `<a download href="/cv/cv-ander-akier.pdf">` + icono `Download`)_
+  - [x] Links a LinkedIn y GitHub con iconos _(brand icons extraídos a `src/components/icons/brand.tsx` y reusados en Footer + Contact — DRY)_
+  - [x] Disponibilidad y ubicación _(grid 2 cols con iconos `MapPin` y `Clock` en pills `bg-primary/10`)_
+- [x] Subir `cv-ander-akier.pdf` a `public/cv/` _(adelantado en Fase 0)_
+- [x] Subir foto de perfil a `public/images/` _(adelantado en Fase 0)_
+
+### Decisiones técnicas tomadas
+- **Brand icons compartidos**: `LinkedinIcon` y `GithubIcon` extraídos de `Footer.tsx` a `src/components/icons/brand.tsx` y reusados en Contact (DRY; Footer migrado a importar del módulo nuevo).
+- **Layout**: grid 2 cols (md+) / 1 col mobile, 5 items con icono pill + label uppercase mono + value clickable o texto.
+- **Background**: neutral (sin `bg-muted`) — tras Education que ya tiene cards, deja respiración antes del Footer.
+- **CTA CV**: shadcn Button `asChild` envolviendo `<a download>` (mismo patrón que el botón de descarga en `Hero.tsx`).
+- **Animación**: Framer Motion `whileInView` con `once: true, amount: 0.2` — coherente con las 5 secciones anteriores.
 
 ### PR
 `feature/fase-4-contact` → `develop`
