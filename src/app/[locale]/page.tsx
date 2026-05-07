@@ -1,6 +1,11 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/About";
+import { Experience } from "@/components/sections/Experience";
+import { Projects } from "@/components/sections/Projects";
+import { Skills } from "@/components/sections/Skills";
+import { Education } from "@/components/sections/Education";
 
 export default function HomePage() {
   return (
@@ -8,12 +13,11 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        {/* Placeholders para fases siguientes */}
-        <section id="about" className="min-h-[40vh]" />
-        <section id="experience" className="min-h-[40vh]" />
-        <section id="projects" className="min-h-[40vh]" />
-        <section id="skills" className="min-h-[40vh]" />
-        <section id="education" className="min-h-[40vh]" />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Education />
         <section id="contact" className="min-h-[40vh]" />
       </main>
       <Footer />
