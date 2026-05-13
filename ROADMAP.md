@@ -248,7 +248,7 @@ Objetivo: balancear el tono "vendedor" del chatbot con autoconciencia honesta so
 
 ---
 
-## FASE 5 — Pulido y deploy final (Día 11-12) ✅ (pulido aplicado; deploy a `main` en curso)
+## FASE 5 — Pulido y deploy final (Día 11-12) ✅ (production live en `main`)
 
 Objetivo: web lista para compartir públicamente.
 
@@ -263,16 +263,19 @@ Objetivo: web lista para compartir públicamente.
 - [x] **CSP report-only + security headers** en `next.config.ts`: Content-Security-Policy-Report-Only con allowlist para fonts.google/gstatic, Gemini, Groq y Vercel analytics; X-Content-Type-Options nosniff; Referrer-Policy strict-origin-when-cross-origin; Permissions-Policy bloquea camera/mic/geo/interest-cohort.
 - [x] **SECURITY inline**: 7 PASS (API keys solo `process.env.*`, 0 matches teléfono/salario/console.log, `.env.local` y `PERFIL_PRIVADO.md` confirmados gitignored, robots disallow `/api/`, sitemap URLs absolutas correctas).
 - [x] **Build + tsc + lint clean** (Next 16.2.4 + Turbopack). Build genera 8 rutas: `/`, `/_not-found`, `/[locale]` (ƒ), `/api/chat` (ƒ), `/icon.svg` (○), `/opengraph-image` (ƒ Edge), `/robots.txt` (○), `/sitemap.xml` (○).
-- [ ] **QA Lighthouse > 90 mobile + desktop** (Performance, Accessibility, Best Practices, SEO) — en preview Vercel
-- [ ] **Chatbot E2E en preview** + switch idioma + CV download + responsive 375/768/1280/1920
-- [ ] **Aprobación visual del usuario en preview**
+- [ ] **QA Lighthouse > 90 mobile + desktop** (Performance, Accessibility, Best Practices, SEO) — pendiente verificación manual del usuario en Chrome DevTools sobre la URL Production
+- [x] **Chatbot E2E** (3 prompts ES + EN en preview Fase 5, regresión Fase 4.6 sin leak verificada; smoke test post-deploy a main con respuesta limpia desde provider groq)
+- [x] **Aprobación visual del usuario en preview** (PR #9)
 
 ### Tareas — Bloque B (promote `develop` → `main`)
-- [ ] PR `develop` → `main` con changelog completo de Fases 0-5
-- [ ] Verificar deploy en Vercel Production
-- [ ] Smoke test chatbot en URL pública sin auth wall
-- [ ] Aprobación visual del usuario en URL pública
-- [ ] Recordar al usuario actualizar LinkedIn y GitHub profile README con la URL
+- [x] PR `develop` → `main` con changelog completo de Fases 0-5 (PR #10, merge commit `1cc81a9` — preserva el histórico de fases en `main`)
+- [x] Verificar deploy en Vercel Production (HTTP 200 en URL pública; robots/sitemap/icon/OG image todos OK con URLs canónicas de producción)
+- [x] Smoke test chatbot en URL pública sin auth wall (provider groq responde correctamente, sin leak de marcadores internos)
+- [x] Aprobación visual del usuario en URL pública (2026-05-13)
+- [ ] Recordar al usuario actualizar LinkedIn y GitHub profile README con la URL `https://portfolio-web-ackyers-projects.vercel.app/es`
+
+### URL pública (production)
+**https://portfolio-web-ackyers-projects.vercel.app/es** (ES, default) · **https://portfolio-web-ackyers-projects.vercel.app/en** (EN)
 
 ### Decisiones técnicas tomadas
 - **`MotionConfig` global** (no patrón explícito por sección) — 1 archivo nuevo (MotionProvider) en lugar de 5–6 edits manuales con variants alternativos. Más limpio, mismo comportamiento. Hero mantiene su patrón explícito (era pre-existente y funciona como refuerzo).
