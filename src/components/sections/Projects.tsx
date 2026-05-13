@@ -10,9 +10,9 @@ export function Projects() {
   const stack = t.raw("tfg.stack") as string[];
 
   return (
-    <section id="projects">
+    <section id="projects" aria-labelledby="projects-heading">
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
-        <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-8 md:mb-12">
+        <h2 id="projects-heading" className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-8 md:mb-12">
           {t("sectionTitle")}
         </h2>
 

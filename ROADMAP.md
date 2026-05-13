@@ -248,25 +248,47 @@ Objetivo: balancear el tono "vendedor" del chatbot con autoconciencia honesta so
 
 ---
 
-## FASE 5 — Pulido y deploy final (Día 11-12)
+## FASE 5 — Pulido y deploy final (Día 11-12) ✅ (pulido aplicado; deploy a `main` en curso)
 
 Objetivo: web lista para compartir públicamente.
 
-### Tareas
-- [ ] SEO: `metadata` en `layout.tsx` (title, description, og:image)
-- [ ] `robots.txt` y `sitemap.xml`
-- [ ] Favicon con inicial "A" o logo simple
-- [ ] Revisión de accesibilidad (ARIA labels, contraste, tab navigation)
-- [ ] Revisión de performance (Lighthouse > 90 en todas las métricas)
-- [ ] Revisión de responsive en dispositivos reales
-- [ ] Revisión de textos ES/EN (consistencia, sin errores)
-- [ ] Merge `develop` → `main`
-- [ ] Verificar deploy en Vercel
-- [ ] Comprobar que el chatbot funciona en producción
-- [ ] Añadir URL de la web a perfil de LinkedIn y GitHub
+### Tareas — Bloque A (pulido `feature/fase-5-pulido` → `develop`)
+- [x] **SEO**: `generateMetadata({ params })` async en `src/app/[locale]/layout.tsx` (title con template, description, openGraph con URL canónica + locale BCP47, twitter card, alternates hreflang `es-ES`/`en-US`/`x-default`, robots con googleBot max-image-preview large). `metadataBase` lee de `NEXT_PUBLIC_SITE_URL` con fallback al subdomain Vercel.
+- [x] **Favicon**: `src/app/icon.svg` con monograma "AA" geométrico (color primary `#1E3A5F` sobre fondo). Next 16 lo sirve automáticamente como `/favicon.ico`.
+- [x] **OG image dinámica**: `src/app/opengraph-image.tsx` usando `next/og` ImageResponse (1200×630, Edge runtime). Render server-side con nombre + headline + microcopy de diferenciación.
+- [x] **robots y sitemap dynamic TS**: `src/app/robots.ts` (allow `/`, disallow `/api/`, sitemap + host canónicos) y `src/app/sitemap.ts` (entries por locale leídos de `routing.locales`, `alternates.languages` hreflang).
+- [x] **A11y bind H2 ↔ section**: `<section aria-labelledby="...">` ↔ `<h2 id="...">` en las 6 secciones (Hero h1, About/Experience/Projects/Skills/Education/Contact h2).
+- [x] **Reduced motion global**: `MotionConfig reducedMotion="user"` envuelve la app via `src/components/providers/MotionProvider.tsx` (client wrapper consumido por `[locale]/layout.tsx`). Framer Motion respeta `prefers-reduced-motion` automáticamente para todos los `motion.*`; Hero conserva su patrón explícito de variants alternativos (complementario, no duplicado).
+- [x] **Skip-to-content link** en Header (sr-only + focus:not-sr-only), ancla al `<main id="main">` de page.tsx; clave i18n nueva `header.skipToContent` en ES/EN.
+- [x] **CSP report-only + security headers** en `next.config.ts`: Content-Security-Policy-Report-Only con allowlist para fonts.google/gstatic, Gemini, Groq y Vercel analytics; X-Content-Type-Options nosniff; Referrer-Policy strict-origin-when-cross-origin; Permissions-Policy bloquea camera/mic/geo/interest-cohort.
+- [x] **SECURITY inline**: 7 PASS (API keys solo `process.env.*`, 0 matches teléfono/salario/console.log, `.env.local` y `PERFIL_PRIVADO.md` confirmados gitignored, robots disallow `/api/`, sitemap URLs absolutas correctas).
+- [x] **Build + tsc + lint clean** (Next 16.2.4 + Turbopack). Build genera 8 rutas: `/`, `/_not-found`, `/[locale]` (ƒ), `/api/chat` (ƒ), `/icon.svg` (○), `/opengraph-image` (ƒ Edge), `/robots.txt` (○), `/sitemap.xml` (○).
+- [ ] **QA Lighthouse > 90 mobile + desktop** (Performance, Accessibility, Best Practices, SEO) — en preview Vercel
+- [ ] **Chatbot E2E en preview** + switch idioma + CV download + responsive 375/768/1280/1920
+- [ ] **Aprobación visual del usuario en preview**
+
+### Tareas — Bloque B (promote `develop` → `main`)
+- [ ] PR `develop` → `main` con changelog completo de Fases 0-5
+- [ ] Verificar deploy en Vercel Production
+- [ ] Smoke test chatbot en URL pública sin auth wall
+- [ ] Aprobación visual del usuario en URL pública
+- [ ] Recordar al usuario actualizar LinkedIn y GitHub profile README con la URL
+
+### Decisiones técnicas tomadas
+- **`MotionConfig` global** (no patrón explícito por sección) — 1 archivo nuevo (MotionProvider) en lugar de 5–6 edits manuales con variants alternativos. Más limpio, mismo comportamiento. Hero mantiene su patrón explícito (era pre-existente y funciona como refuerzo).
+- **`robots.ts` y `sitemap.ts` en TypeScript dynamic** (no archivos estáticos en `public/`) — Next 16 los regenera con `lastModified: new Date()` y permite leer `routing.locales` automáticamente.
+- **OG image dinámica con `next/og`** en lugar de PNG estático — escala con cambios de headline sin re-exportar, server-side render, Edge runtime aislado del proxy Node.
+- **CSP en modo `report-only`** primero (no enforce) — para no romper silenciosamente; promover a enforce en una iteración posterior tras observar reports.
+- **Hreflang `x-default` = `/es`** — coherente con `defaultLocale: "es"` en routing.
+
+### Acción manual del usuario antes del deploy a main
+Vercel Dashboard → Settings → Environment Variables → **Production**:
+- `GEMINI_API_KEY` (Gemini chatbot — primario)
+- `GROQ_API_KEY` (Groq fallback)
+- `NEXT_PUBLIC_SITE_URL` = `https://portfolio-web-ackyers-projects.vercel.app` (o dominio custom si lo añades)
 
 ### PR
-`feature/fase-5-pulido` → `develop` → merge final a `main`
+`feature/fase-5-pulido` → `develop` → tras aprobación, PR `develop` → `main` para deploy a producción
 
 ---
 

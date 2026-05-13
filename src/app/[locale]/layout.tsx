@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import { Syne, Inter, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ChatWidget } from "@/components/chat/ChatWidget";
+import { MotionProvider } from "@/components/providers/MotionProvider";
 import "../globals.css";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://portfolio-web-ackyers-projects.vercel.app";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -25,15 +30,59 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Ander Akier Ayucar Chasco — Data Engineer & Analyst",
-  description:
-    "Portfolio profesional de Ander Akier Ayucar Chasco, Ingeniero Informático especializado en Data Engineering, Data Analysis y Machine Learning.",
-};
+type LocaleParams = { locale: string };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<LocaleParams>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta" });
+  const ogLocale = locale === "es" ? "es_ES" : "en_US";
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: t("siteTitle"),
+      template: "%s · Ander Akier",
+    },
+    description: t("siteDescription"),
+    applicationName: "Ander Akier — Portfolio",
+    authors: [{ name: "Ander Akier Ayucar Chasco" }],
+    creator: "Ander Akier Ayucar Chasco",
+    openGraph: {
+      type: "website",
+      siteName: "Ander Akier — Portfolio",
+      title: t("siteTitle"),
+      description: t("siteDescription"),
+      url: `${SITE_URL}/${locale}`,
+      locale: ogLocale,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("siteTitle"),
+      description: t("siteDescription"),
+    },
+    alternates: {
+      canonical: `${SITE_URL}/${locale}`,
+      languages: {
+        "es-ES": `${SITE_URL}/es`,
+        "en-US": `${SITE_URL}/en`,
+        "x-default": `${SITE_URL}/es`,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    },
+  };
+}
 
 type Props = {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: Promise<LocaleParams>;
 };
 
 export default async function LocaleLayout({ children, params }: Props) {
@@ -52,8 +101,10 @@ export default async function LocaleLayout({ children, params }: Props) {
     >
       <body className="min-h-screen antialiased">
         <NextIntlClientProvider messages={messages}>
-          {children}
-          <ChatWidget />
+          <MotionProvider>
+            {children}
+            <ChatWidget />
+          </MotionProvider>
         </NextIntlClientProvider>
       </body>
     </html>

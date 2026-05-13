@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Download, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -25,6 +25,14 @@ const itemVariants: Variants = {
   },
 };
 
+const itemVariantsReduced: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.2, ease: "easeOut" },
+  },
+};
+
 const imageVariants: Variants = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: {
@@ -34,18 +42,27 @@ const imageVariants: Variants = {
   },
 };
 
+const imageVariantsReduced: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.2, ease: "easeOut" },
+  },
+};
+
 export function Hero() {
   const t = useTranslations("hero");
+  const reduce = useReducedMotion();
 
   return (
     <section
-      id="top"
+      id="hero"
       className="min-h-screen flex items-center"
-      aria-label={t("name")}
+      aria-labelledby="hero-heading"
     >
       <motion.div
         className="mx-auto max-w-6xl px-4 md:px-6 pt-24 pb-12 w-full"
-        initial="hidden"
+        initial={reduce ? false : "hidden"}
         animate="visible"
         variants={containerVariants}
       >
@@ -53,13 +70,14 @@ export function Hero() {
           {/* Text block */}
           <div className="flex flex-col gap-6 order-2 md:order-1">
             <motion.h1
-              variants={itemVariants}
+              id="hero-heading"
+              variants={reduce ? itemVariantsReduced : itemVariants}
               className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-foreground"
             >
               {t("name")}
             </motion.h1>
 
-            <motion.p variants={itemVariants} className="text-xl md:text-2xl">
+            <motion.p variants={reduce ? itemVariantsReduced : itemVariants} className="text-xl md:text-2xl">
               <span className="text-muted-foreground">{t("headline")} </span>
               <span className="font-mono text-primary font-semibold">
                 {t("headlineHighlight")}
@@ -67,14 +85,14 @@ export function Hero() {
             </motion.p>
 
             <motion.p
-              variants={itemVariants}
+              variants={reduce ? itemVariantsReduced : itemVariants}
               className="text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
             >
               {t("tagline")}
             </motion.p>
 
             <motion.div
-              variants={itemVariants}
+              variants={reduce ? itemVariantsReduced : itemVariants}
               className="flex flex-wrap gap-3"
             >
               <Button asChild size="lg">
@@ -98,7 +116,7 @@ export function Hero() {
 
           {/* Image block */}
           <motion.div
-            variants={imageVariants}
+            variants={reduce ? imageVariantsReduced : imageVariants}
             className="flex justify-center order-1 md:order-2"
           >
             <div className="relative w-48 h-48 md:w-80 md:h-80">

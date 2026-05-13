@@ -10,9 +10,9 @@ export function Experience() {
   const items = t.raw("items") as ExperienceItem[];
 
   return (
-    <section id="experience" className="bg-muted/30">
+    <section id="experience" aria-labelledby="experience-heading" className="bg-muted/30">
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
-        <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-8 md:mb-12">
+        <h2 id="experience-heading" className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-8 md:mb-12">
           {t("sectionTitle")}
         </h2>
 
