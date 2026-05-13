@@ -10,7 +10,7 @@ export function Contact() {
   const t = useTranslations("contact");
 
   return (
-    <section id="contact">
+    <section id="contact" aria-labelledby="contact-heading">
       <div className="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,7 +18,7 @@ export function Contact() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-8 md:mb-12">
+          <h2 id="contact-heading" className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-8 md:mb-12">
             {t("sectionTitle")}
           </h2>
 

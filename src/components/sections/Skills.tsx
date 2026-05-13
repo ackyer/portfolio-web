@@ -39,9 +39,9 @@ export function Skills() {
   const t = useTranslations("skills");
 
   return (
-    <section id="skills" className="bg-muted/30">
+    <section id="skills" aria-labelledby="skills-heading" className="bg-muted/30">
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
-        <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-8 md:mb-12">
+        <h2 id="skills-heading" className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-8 md:mb-12">
           {t("sectionTitle")}
         </h2>
 
